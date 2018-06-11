@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:border-bottom="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ELO Network</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script src="js/main.js"></script>
+  <link href="https://unpkg.com/rangeable@latest/dist/rangeable.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/custom-sale.css" rel="stylesheet">
+  <link href="css/about.css" rel="stylesheet">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+  <div class="loader"></div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="index.html"><img alt="logo" src="img/logo.png"></a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="sale.html">Join Ico</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="product.html">Our Product</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger active" href="aboutus.html">About</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="team.html">Team</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="faqs.html">FAQ's</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a style="background: white;border-radius: 0px !important;color: #4b5bf7;" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="whitepaper.pdf" target="_blank">White Paper</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="about-head" class="pb-2">
+    <div class="container">
+      <h2>Make Money <br> While You</h2>
+      <h1 class="about-h1-animation">DRIVE</h1>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h1 class="text-center about-h1-animation">ELO.NETWORK</h1>
+      <p class="text-center mt-2">
+        Elo.network is a mobile platform for interactive on-car advertising developed on the decentralized blockchain technology.
+        It is a global mobile solution based on geolocation and blockchain + smart contract technologies
+      </p>
+      <p class="text-center mb-5">
+        It is a mobile app that serves an on-vehicle advertising platform where brands and drivers come together for mutual
+        benefits. The drivers get an opportunity to earn cash that can be used to supplement their gas, parking, and car
+        wash budgets while brands increase their target audience through outdoor advertising. Drivers become ambassadors
+        of their favorite brands and are willing to recommend the brand to receptive audiences.
+      </p>
+    </div>
+  </section>
+  <div class="range-meter">
+    <h2 class="text-center">CALCULATE YOUR EARNING PER MILE</h2>
+    <input type="hidden" id="selectedTier" value="tier1">
+    <div class="d-flex justify-content-center">
+      <div id="tier1" class="round-select active"> Tier 1</div>
+      <div id="tier2" class="round-select"> Tier 2</div>
+      <div id="tier3" class="round-select"> Tier 3</div>
+    </div>
+    <input type="range">
+
+    <div class="d-flex justify-content-between">
+      <h2><span id="miles"></span>  Miles</h2>
+      <h2><span id="points"></span>  Points</h2>
+      <h2><span id="usd"></span></h2>
+    </div>
+    <div id="tierInfo"></div>
+  </div>
+  <div id="map-canvas"></div>
+  <div class="after-map"><h2>OUR VISION TO TOKENIZE AND DISRUPT THE OOH ADVERTISING INDUSTRY.<h2></div>
+
+    <div class="info">
+      <div class="row">
+        <div class="col-md-3 info-inner info-one">
+          <h5>
+            GLOBAL ADVERTISING
+            BUDGET IN 2020 TO REACH
+          </h5>
+          <div class="d-flex flex-row">
+            <img src="img/about/1-1.png">
+            <h1>725</h1>
+          </div>
+          <h4>BILLION USD</h4>
+        </div>
+        <div class="col-md-3 info-inner info-two">
+          <h5>
+            NUMBER OF
+            VEHICLE OWNERS
+          </h5>
+          <div class="d-flex flex-row">
+            <img src="img/about/2-1.png">
+            <h1>1B+</h1>
+          </div>
+          <h4>IN THE WORLD</h4>
+        </div>
+        <div class="col-md-3 info-inner info-three">
+          <img src="img/about/3-1.png">
+          <h4>MAKING OUTDOOR
+            ADVERTISING DYNAMIC</h4>
+          </div>
+          <div class="col-md-3 info-inner info-four">
+            <img src="img/about/4-1.png">
+            <h4>TAMPER PROOF
+              MARKETING ANALYTICS</h4>
+            </div>
+          </div>
+        </div>
+        <section class="business-process">
+          <div class="container pb-2">
+            <h3 class="text-center pt-5 mb-5">INITIAL BUSINESS PROCESS</h3>
+            <div class="row pb-5">
+              <div class="col-md-2">
+                <div class="black-round">BRAND</div>
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <div class=" col-sm-5 left-area">
+                    Brand buys Elo tokens
+                    to activate Elo.network
+                    and put campaigns on the app
+                    <img src="img/about/arrow.png">
+                  </div>
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-5 right-area">
+                    Driver buys Elo tokens to activate
+                    Elo.network and choose
+                    ads by brands and earn points
+                    <img src="img/about/arrow-right.png">
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center"> <img src="img/about/elo-logo.png"> </div>
+                  <div class="row">
+                    <div class="col-sm-5 left-area">
+                      <img src="img/about/arrow.png">
+                      Brand pays Elo.Network fiat currency
+                      to do their ad campaigns
+                    </div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-5 right-area">
+                      <img src="img/about/arrow-right.png">
+                      Elo.Network rewards the drivers
+                      with points for promoting the brand’s
+                      ads. The points can be redeemed for
+                      fiat currency by the user (driver)
+                    </div>
+                  </div>
+
+              </div>
+              <div class="col-md-2">
+                <div class="black-round">DRIVER</div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+        <section class="clients">
+          <div class="container">
+            <h2 class="text-center text-uppercase how-it-work-animate mt-5"> OUR CLIENTS</h2>
+            <div class="row mt-3">
+              <div class="col-sm-2 br">
+                <img width="90%" src="img/clients/brands-01.jpg">
+              </div>
+              <div class="col-sm-2 br">
+                <img width="90%" src="img/clients/brands-02.jpg">
+              </div>
+              <div class="col-sm-2 br">
+                <img width="90%" src="img/clients/brands-03.jpg">
+              </div>
+              <div class="col-sm-2 br">
+                <img width="90%" src="img/clients/brands-04.jpg">
+              </div>
+              <div class="col-sm-2 br">
+                <img width="90%" src="img/clients/brands-05.jpg">
+              </div>
+              <div class="col-sm-2">
+                <img width="90%" src="img/clients/brands-06.jpg">
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Footer -->
+
+        <footer class="footer text-center">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-md-12 mb-5 mb-lg-0">
+                <h2 class="text-uppercase mb-4 footer-animate  mb-2 mt-4" onscroll="check_if_in_view_footer();">follow us</h2>
+                <ul class="d-flex justify-content-around list-inline mb-0">
+                  <li data-aos="fade-down" data-aos-duration="5000" class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                      <i class="fa fa-fw fa-reddit"></i>
+                    </a>
+                  </li>
+                  <li data-aos="fade-down" data-aos-duration="5000" class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                      <i class="fa fa-fw fa-github"></i>
+                    </a>
+                  </li>
+                  <li data-aos="fade-down" data-aos-duration="5000" class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                      <i class="fa fa-fw fa-telegram"></i>
+                    </a>
+                  </li>
+                  <li data-aos="fade-down" data-aos-duration="5000" class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                      <i class="fa fa-fw fa-btc"></i>
+                    </a>
+                  </li>
+                  <li data-aos="fade-down" data-aos-duration="5000" class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                      <i class="fa fa-fw fa-medium"></i>
+                    </a>
+                  </li>
+                  <li data-aos="fade-down" data-aos-duration="5000" class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                      <i class="fa fa-fw fa-twitter"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <h2 class="text-uppercase mb-4 footer-animate  mb-2 mt-4" onscroll="check_if_in_view_footer();">Quick Links</h2>
+            <div class="row text-left links">
+              <div class="col-md-3">
+                <a href="#">Advertisers</a><br>
+                <a href="#">Drivers</a><br>
+                <a href="#">App</a><br>
+                <a href="#">About Elo.Network</a>
+              </div>
+              <div class="col-md-3">
+                <a href="#">How It Works</a><br>
+                <a href="#">FAQ</a><br>
+                <a href="#">Token sale process</a>
+              </div>
+              <div class="col-md-3">
+                <a href="#">Whitepaper</a><br>
+                <a href="#">One pager</a><br>
+                <a href="#">Media</a>
+              </div>
+              <div class="col-md-3">
+                <a href="#">Terms of use</a><br>
+                <a href="#">Privacy policy</a><br>
+                <a href="#">Case study</a>
+              </div>
+            </div>
+          </div>
+
+        </footer>
+
+        <div class="copyright py-4 text-center text-white">
+          <div class="container">
+            <small>Copyright &copy; ELO 2018</small>
+          </div>
+        </div>
+
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+        <div class="scroll-to-top d-lg-none position-fixed ">
+          <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+        </div>
+
+
+        <div style="background: #272137" class="modal" id="checkModal" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Authentication Required !</h4>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="container">
+                  <div id="passError"></div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-0">
+                          <label>Password</label>
+                          <input id="pass" style="font-size: 1em" class="form-control" type="password" placeholder="Enter Password" required="required">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 mt-3">
+                      <div class="form-group">
+                        <button id="checkPass" class="btn btn-primary contact-btn" id="sendMessageButton">Unlock</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Contact Form JavaScript -->
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/contact_me.js"></script>
+        <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
+        <script src="https://unpkg.com/rangeable@latest/dist/rangeable.min.js">
+        <!-- Custom scripts for this template -->
+        <script src="js/freelancer.min.js"></script>
+        <script src="js/line.js"></script>
+        <script src="js/password.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDncRRMuwbqCrp4rNS2KcXZXsuzGVdh-HI"></script>
+        <script>
+
+        function updatePoints(dist) {
+          var pts = dist * 5;
+          $("#points").html(" "+pts);
+        }
+        function updateUsd(dist) {
+          var sTier = $('#selectedTier').val();
+          var usd = dist * 0.5;
+          if (sTier == 'tier1') {
+            $("#usd").html("$"+usd);
+          }
+          else if (sTier == 'tier2') {
+            $("#usd").html("$"+usd + " + $50 Bonus = "+ (usd+50));
+          }
+          else if (sTier == 'tier3') {
+            $("#usd").html("$"+usd  + " x2 + $50 Bonus = "+ ((2*usd)+50));
+          }
+
+        }
+
+        var directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions: { strokeColor: "#1CA0E0" } });
+        var directionsService = new google.maps.DirectionsService();
+
+        var map;
+        var lt = 25.1279480;
+        var ln = 55.3862640;
+        var start = new google.maps.LatLng(25.1279480, 55.3862640);
+        var startMarker = new google.maps.Marker({ position: start, map: map, icon: 'http://ruralshores.com/assets/marker-icon.png' });
+        //  var stopMarker = new google.maps.Marker({ position: end, map: map, icon: 'stop.png' });
+        var mapOptions = {
+          zoom : 5,
+          center: start,
+          disableDefaultUI: true,
+          styles:[
+            {
+              "featureType": "all",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "saturation": 36
+                },
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 40
+                }
+              ]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "visibility": "on"
+                },
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 16
+                }
+              ]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.icon",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 20
+                }
+              ]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 17
+                },
+                {
+                  "weight": 1.2
+                }
+              ]
+            },
+            {
+              "featureType": "landscape",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 20
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 21
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 17
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 29
+                },
+                {
+                  "weight": 0.2
+                }
+              ]
+            },
+            {
+              "featureType": "road.arterial",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 18
+                }
+              ]
+            },
+            {
+              "featureType": "road.local",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 16
+                }
+              ]
+            },
+            {
+              "featureType": "transit",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 19
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 17
+                }
+              ]
+            }
+          ]
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+
+        directionsDisplay.setMap(map);
+        directionsDisplay.setOptions( { suppressMarkers: true } );
+        var triangleCoords = [
+          {lat: 25.058, lng: 55.245},
+          {lat: 25.157, lng: 55.212},
+          {lat: 25.073, lng: 55.129},
+          {lat: 24.960, lng: 55.231}
+        ];
+
+        var triangleCoords1 = [
+          {lat: 25.279, lng: 55.429},
+          {lat: 25.235, lng: 55.565},
+          {lat: 25.170, lng: 55.494},
+          {lat: 25.183, lng: 55.399}
+        ];
+
+        var tier2Area = new google.maps.Polygon({
+          paths: triangleCoords,
+          strokeColor: '#1CA0E0',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#1CA0E0',
+          fillOpacity: 0.35
+        });
+
+        var tier2Area1 = new google.maps.Polygon({
+          paths: triangleCoords1,
+          strokeColor: '#1CA0E0',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#1CA0E0',
+          fillOpacity: 0.35
+        });
+
+        var HotRouteCoordinates = [
+          {lat: 25.186, lng: 55.371},
+          {lat: 25.236, lng: 55.377},
+          {lat: 25.252, lng: 55.387},
+          {lat: 25.293, lng: 55.407}
+        ];
+
+        HotRoute = new google.maps.Polyline({
+          path: HotRouteCoordinates,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+
+        function getNewLat(dist , lat) {
+          your_meters = dist * 1609.344;
+          var earth = 6378.137,  //radius of the earth in kilometer
+          pi = Math.PI,
+          m = (1 / ((2 * pi / 360) * earth)) / 1000;  //1 meter in degree
+          var new_latitude = lat + (your_meters * m);
+          return new_latitude;
+        }
+
+        function getNewLng(dist , lng , lat){
+          your_meters = dist * 1609.344;
+          var earth = 6378.137,  //radius of the earth in kilometer
+          pi = Math.PI,
+          cos = Math.cos,
+          m = (1 / ((2 * pi / 360) * earth)) / 1000;  //1 meter in degree
+          var new_longitude = lng + (your_meters * m) / cos(lat * (pi / 180));
+          return new_longitude;
+        }
+
+        function calRoute(dist){
+          var newLat = getNewLat(dist , lt);
+          var newLng = getNewLng(dist , ln , lt);
+          end = new google.maps.LatLng(newLat, newLng);
+          var request = {
+            origin:start,
+            destination:end,
+            waypoints:[{
+              location:"Mirdif, Dubai",
+              stopover: false
+            }],
+//            optimizeWaypoints: true,
+            travelMode:'DRIVING'
+          };
+          directionsService.route(request,function(result,status){
+            if (status == "OK"){
+              directionsDisplay.setDirections(result);
+            }
+          });
+        }
+
+        </script>
+
+
+        <script>
+        const slider = new Rangeable("input[type=range]",{
+          type: "single",
+          tooltips: "false",
+          min: 1,
+          max: 50,
+          step: 1,
+          value: 10,
+          vertical: false,
+          controls: undefined,
+          onInit: function() {
+
+            $("#miles").html("10");
+            updatePoints(10);
+            updateUsd(10);
+            calRoute(10);
+            // do something when the instance has loaded
+          },
+          onStart: function() {
+
+            // do something on mousedown/touchstart
+          },
+          onChange: function() {
+            // do something when the value changes
+            $("#miles").html(slider.getValue());
+            updatePoints(slider.getValue());
+            updateUsd(slider.getValue());
+            calRoute(slider.getValue());
+            map.setZoom(12);
+          },
+          onEnd: function() {
+            // do something on mouseup/touchend
+          }
+        });
+
+        $('.round-select').click(function (){
+          $(this).addClass('active').siblings().removeClass('active');
+
+          var tier = $(this).attr('id');
+          $('#selectedTier').val(tier);
+
+          if (tier == 'tier2') {
+            updateUsd(slider.getValue());
+            HotRoute.setMap(null);
+            tier2Area.setMap(null);
+            tier2Area1.setMap(null);
+            tier2Area.setMap(map);
+            tier2Area1.setMap(map);
+
+            map.setZoom(10);
+            $('#tierInfo').html("<h3>Cross the Marked Area and get $50 Extra !</h3>");
+          }
+          else if (tier == 'tier3') {
+            updateUsd(slider.getValue());
+            map.setZoom(10);
+            HotRoute.setMap(null);
+            tier2Area.setMap(null);
+            tier2Area1.setMap(null);
+            tier2Area1.setMap(map);
+            tier2Area.setMap(map);
+            HotRoute.setMap(map);
+            $('#tierInfo').html("<h3>Cross the Marked Area to get  $50 Extra and Hot Route will double your Earnings !</h3>");
+          }
+          else if (tier == 'tier1') {
+            updateUsd(slider.getValue());
+            $('#tierInfo').html("");
+            HotRoute.setMap(null);
+            tier2Area.setMap(null);
+            tier2Area1.setMap(null);
+          }
+        });
+        </script>
+      </body>
+
+      </html>

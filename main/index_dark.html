@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>ELO | Dashboard</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="ELO Network - Pay as you go" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="../assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="../assets/layouts/layout3/css/custom-dark.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Unica+One);
+$colors: #2b908f, #90ee7e, #f45b5b, #7798BF, #aaeeee, #ff0066, #eeaaee, #55BF3B, #DF5353, #7798BF, #aaeeee;
+
+.highcharts-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  line-height: normal;
+  z-index: 0; /* #1072 */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  font-family: 'Unica One', sans-serif;
+  font-size: 12px;
+}
+.highcharts-root text {
+  stroke-width: 0;
+}
+.highcharts-background {
+  fill: #000;
+}
+.highcharts-plot-border, .highcharts-plot-background {
+  fill: none;
+}
+.highcharts-label-box {
+  fill: none;
+}
+
+/* Titles */
+.highcharts-title {
+  fill: #E0E0E3;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.highcharts-subtitle {
+  fill: #E0E0E3;
+  text-transform: uppercase;
+}
+
+/* Axes */
+.highcharts-axis-line {
+  fill: none;
+  stroke: #C0D0E0;
+}
+.highcharts-yaxis .highcharts-axis-line {
+  stroke-width: 0;
+}
+.highcharts-axis-title {
+  fill: #707070;
+}
+.highcharts-axis-labels {
+  fill: #E0E0E3;
+  cursor: default;
+  font-size: 0.9em;
+}
+.highcharts-grid-line {
+  fill: none;
+  stroke: #D8D8D8;
+}
+.highcharts-xaxis-grid .highcharts-grid-line {
+  stroke-width: 0;
+}
+.highcharts-tick {
+  stroke: #C0D0E0;
+}
+.highcharts-yaxis .highcharts-tick {
+  stroke-width: 0;
+}
+.highcharts-minor-grid-line {
+  stroke: #e0e0e0;
+}
+.highcharts-crosshair-thin {
+  stroke-width: 1px;
+  stroke: #c0c0c0;
+}
+.highcharts-crosshair-category {
+  stroke: rgba(155,200,255,0.2);
+}
+
+
+/* Credits */
+.highcharts-credits {
+  cursor: pointer;
+  fill: #666;
+  font-size: 0.7em;
+  transition: fill 250ms, font-size 250ms;
+}
+.highcharts-credits:hover {
+  fill: black;
+  font-size: 1em;
+}
+
+/* Tooltip */
+.highcharts-tooltip {
+  cursor: default;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: stroke 150ms;
+  filter: url(#drop-shadow);
+}
+.highcharts-tooltip text {
+  fill: #F0F0F0;
+}
+.highcharts-tooltip .highcharts-header {
+  font-size: 0.85em;
+}
+.highcharts-tooltip-box {
+  stroke-width: 1px;
+  fill: rgba(0, 0, 0, 0.85);
+  fill-opacity: 0.85;
+}
+
+.highcharts-selection-marker {
+  fill: #4572A7;
+  fill-opacity: 0.25;
+}
+
+.highcharts-graph {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.highcharts-state-hover .highcharts-graph {
+stroke-width: 3;
+}
+.highcharts-state-hover path {
+  transition: stroke-width 50; /* quick in */
+}
+.highcharts-state-normal path {
+transition: stroke-width 250ms; /* slow out */
+}
+
+/* Legend hover affects points and series */
+g.highcharts-series, .highcharts-point {
+  transition: opacity 250ms;
+}
+.highcharts-legend-series-active g.highcharts-series:not(.highcharts-series-hover),
+.highcharts-legend-point-active .highcharts-point:not(.highcharts-point-hover) {
+  opacity: 0.2;
+}
+
+/* Series options */
+
+/* Default colors */
+@for $i from 1 through length($colors) {
+$color: nth($colors, $i);
+.highcharts-color-#{$i - 1} {
+  fill: $color;
+  stroke: $color;
+}
+}
+
+.highcharts-area {
+  fill-opacity: 0.75;
+  stroke-width: 0;
+}
+.highcharts-markers {
+  stroke-width: 1px;
+  stroke: #ffffff;
+}
+.highcharts-point {
+  stroke-width: 1px;
+}
+.highcharts-legend .highcharts-point {
+  stroke-width: 0;
+}
+
+.highcharts-data-label {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.highcharts-data-label-box {
+  fill: none;
+  stroke-width: 0;
+}
+.highcharts-data-label text {
+  font-size: 11px;
+  font-weight: bold;
+  color: #B0B0B3;
+  text-shadow: 0 0 6px #000000, 0 0 3px #000000;
+  fill: #B0B0B3;
+  text-rendering: geometricPrecision;
+}
+.highcharts-data-label-connector {
+  fill: none;
+}
+.highcharts-halo {
+  fill-opacity: 0.25;
+  stroke-width: 0;
+}
+.highcharts-point-select {
+  fill: #FFFFFF;
+  stroke: #000000;
+}
+.highcharts-column-series .highcharts-point {
+  stroke: #ffffff;
+  transition: fill-opacity 250ms;
+}
+.highcharts-column-series .highcharts-point-hover {
+  fill-opacity: 0.75;
+  transition: fill-opacity 50ms;
+}
+.highcharts-pie-series .highcharts-point {
+  stroke-linejoin: round;
+  stroke: #ffffff;
+}
+.highcharts-pie-series .highcharts-point-hover {
+  fill-opacity: 0.75;
+  transition: fill-opacity 50ms;
+}
+.highcharts-pie-series .highcharts-point-select {
+  fill: inherit;
+  stroke: inherit;
+}
+.highcharts-funnel-series .highcharts-point {
+  stroke-linejoin: round;
+  stroke: #ffffff;
+}
+.highcharts-funnel-series .highcharts-point-hover {
+  fill-opacity: 0.75;
+  transition: fill-opacity 50ms;
+}
+.highcharts-funnel-series .highcharts-point-select {
+  fill: inherit;
+  stroke: inherit;
+}
+.highcharts-pyramid-series .highcharts-point {
+  stroke-linejoin: round;
+  stroke: #ffffff;
+}
+.highcharts-pyramid-series .highcharts-point-hover {
+  fill-opacity: 0.75;
+  transition: fill-opacity 50ms;
+}
+.highcharts-pyramid-series .highcharts-point-select {
+  fill: inherit;
+  stroke: inherit;
+}
+.highcharts-solidgauge-series .highcharts-point {
+  stroke-width: 0;
+}
+.highcharts-treemap-series .highcharts-point {
+  stroke-width: 1px;
+  stroke: #e0e0e0;
+  transition: stroke 250ms, fill 250ms, fill-opacity 250ms;
+}
+.highcharts-treemap-series .highcharts-point-hover {
+  stroke: #000000;
+  transition: stroke 25ms, fill 25ms, fill-opacity 25ms;
+}
+
+.highcharts-treemap-series .highcharts-above-level {
+  display: none;
+}
+.highcharts-treemap-series .highcharts-internal-node {
+  fill: none;
+}
+.highcharts-treemap-series .highcharts-internal-node-interactive {
+  fill-opacity: 0.15;
+  cursor: pointer;
+}
+.highcharts-treemap-series .highcharts-internal-node-interactive:hover {
+  fill-opacity: 0.75;
+}
+
+
+
+/* Legend */
+.highcharts-legend-box {
+  fill: none;
+  stroke-width: 0;
+}
+.highcharts-legend-item text {
+  fill: #E0E0E3;
+  font-weight: bold;
+  cursor: pointer;
+  stroke-width: 0;
+}
+.highcharts-legend-item:hover text {
+  fill: #fff;
+}
+.highcharts-legend-item-hidden * {
+  fill: #cccccc !important;
+  stroke: #cccccc !important;
+  transition: fill 250ms;
+}
+.highcharts-legend-nav-active {
+  fill: #274b6d;
+  cursor: pointer;
+}
+.highcharts-legend-nav-inactive {
+  fill: #c0c0c0;
+}
+.highcharts-legend-title-box {
+  fill: none;
+  stroke-width: 0;
+}
+
+/* Loading */
+.highcharts-loading {
+  position: absolute;
+  background-color: white;
+  opacity: 0.5;
+  text-align: center;
+  z-index: 10;
+  transition: opacity 250ms;
+}
+.highcharts-loading-hidden {
+  height: 0 !important;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 250ms, height 250ms step-end;
+}
+.highcharts-loading-inner {
+  font-weight: bold;
+  position: relative;
+  top: 45%;
+}
+
+/* Plot bands and polar pane backgrounds */
+.highcharts-plot-band {
+  fill: rgba(0, 0, 0, 0.05);
+}
+.highcharts-plot-line {
+  fill: none;
+  stroke: gray;
+  stroke-width: 1px;
+}
+
+/* Highcharts More */
+.highcharts-boxplot-box {
+  fill: white;
+}
+.highcharts-boxplot-median {
+  stroke-width: 2px;
+}
+.highcharts-bubble-series .highcharts-point {
+  fill-opacity: 0.5;
+}
+.highcharts-errorbar-series .highcharts-point {
+  stroke: black;
+}
+.highcharts-gauge-series .highcharts-data-label-box {
+  stroke: silver;
+  stroke-width: 1px;
+}
+.highcharts-gauge-series .highcharts-dial {
+  fill: black;
+  stroke-width: 0;
+}
+.highcharts-polygon-series .highcharts-graph {
+  fill: inherit;
+  stroke-width: 0;
+}
+.highcharts-waterfall-series .highcharts-graph {
+  stroke: #333;
+  stroke-dasharray: 1, 3;
+}
+
+/* Highstock */
+.highcharts-navigator-mask {
+  fill: rgba(128,179,236,0.3); /* navigator.maskFill option */
+}
+.highcharts-navigator-mask-inside {
+  fill: rgba(128,179,236,0.3); /* navigator.maskFill option */
+  cursor: ew-resize;
+}
+.highcharts-navigator-outline {
+  stroke: #b2b1b6;
+  fill: none;
+}
+.highcharts-navigator-handle {
+  stroke: #b2b1b6;
+  fill: #ebe7e8;
+  cursor: ew-resize;
+}
+.highcharts-navigator-series {
+  fill: #4572A7;
+  stroke: #4572A7;
+}
+.highcharts-navigator-series .highcharts-graph {
+  stroke-width: 1px;
+}
+.highcharts-navigator-series .highcharts-area {
+  fill-opacity: 0.05;
+}
+.highcharts-navigator-xaxis .highcharts-axis-line {
+  stroke-width: 0;
+}
+.highcharts-navigator-xaxis .highcharts-grid-line {
+  stroke-width: 1px;
+  stroke: #eee;
+}
+.highcharts-navigator-xaxis.highcharts-axis-labels {
+  fill: #888;
+}
+.highcharts-navigator-yaxis .highcharts-grid-line {
+  stroke-width: 0;
+}
+.highcharts-scrollbar-thumb {
+  fill: #bfc8d1;
+  stroke: #bbb;
+  stroke-width: 1px;
+}
+.highcharts-scrollbar-button {
+  fill: #ebe7e8;
+  stroke: #bbb;
+  stroke-width: 1px;
+}
+.highcharts-scrollbar-arrow {
+  fill: #666;
+}
+.highcharts-scrollbar-rifles {
+  stroke: #666;
+  stroke-width: 1px;
+}
+.highcharts-scrollbar-track {
+  fill: #eeeeee;
+  stroke: #eeeeee;
+  stroke-width: 1px;
+}
+.highcharts-button {
+  cursor: default;
+  fill: #f6f6f6;
+  stroke: #CCC;
+  stroke-width: 1px;
+  transition: fill 250ms;
+}
+.highcharts-button text {
+  fill: black;
+}
+.highcharts-button-hover {
+  fill: #acf;
+  stroke: #68A;
+  transition: fill 0ms;
+}
+.highcharts-button-pressed {
+  fill: #cdf;
+  stroke: #68A;
+  font-weight: bold;
+}
+.highcharts-button-disabled text {
+  fill: #ccc;
+}
+.highcharts-range-selector-buttons .highcharts-button {
+  stroke-width: 0;
+}
+.highcharts-range-label rect {
+  fill: none;
+}
+.highcharts-range-label text {
+  fill: #666;
+}
+.highcharts-range-input rect {
+  fill: none;
+}
+.highcharts-range-input text {
+  fill: #444;
+}
+input.highcharts-range-selector {
+  position: absolute;
+  border: 0;
+  width: 1px; /* Chrome needs a pixel to see it */
+  height: 1px;
+  padding: 0;
+  text-align: center;
+  left: -9em; /* #4798 */
+}
+.highcharts-crosshair-label text {
+  fill: white;
+  font-size: 1.1em;
+}
+.highcharts-crosshair-label .highcharts-label-box {
+  fill: inherit;
+}
+
+
+.highcharts-candlestick-series .highcharts-point {
+  stroke: black;
+  stroke-width: 1px;
+}
+.highcharts-candlestick-series .highcharts-point-up {
+  fill: white;
+}
+.highcharts-ohlc-series .highcharts-point-hover {
+  stroke-width: 3px;
+}
+.highcharts-flags-series .highcharts-point {
+  stroke: gray;
+  fill: white;
+}
+.highcharts-flags-series .highcharts-point-hover {
+  stroke: black;
+  fill: #FCFFC5;
+}
+.highcharts-flags-series .highcharts-point text {
+  fill: black;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+/* Highmaps */
+.highcharts-map-series .highcharts-point {
+  transition: fill 500ms, fill-opacity 500ms, stroke-width 250ms;
+  stroke: silver;
+}
+.highcharts-map-series .highcharts-point-hover {
+  transition: fill 0ms, fill-opacity 0ms;
+  fill-opacity: 0.5;
+  stroke-width: 2px;
+}
+.highcharts-mapline-series .highcharts-point {
+  fill: none;
+}
+.highcharts-heatmap-series .highcharts-point {
+  stroke-width: 0;
+}
+.highcharts-map-navigation {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+}
+.highcharts-coloraxis {
+  stroke-width: 0;
+}
+.highcharts-coloraxis-marker {
+  fill: gray;
+}
+.highcharts-null-point {
+  fill: #f8f8f8;
+}
+
+/* 3d charts */
+.highcharts-3d-frame {
+  fill: transparent;
+}
+.highcharts-column-series .highcharts-point  {
+  stroke: inherit; /* use point color */
+}
+.highcharts-3d-top {
+  filter: url(#highcharts-brighter);
+}
+.highcharts-3d-side {
+  filter: url(#highcharts-darker);
+}
+
+/* Exporting module */
+.highcharts-contextbutton {
+  fill: white; /* needed to capture hover */
+  stroke: none;
+  stroke-linecap: round;
+}
+.highcharts-contextbutton:hover {
+  fill: #acf;
+  stroke: #acf;
+}
+.highcharts-button-symbol {
+  stroke: #666;
+  stroke-width: 3px;
+  fill: #E0E0E0;
+}
+.highcharts-menu {
+  border: 1px solid #A0A0A0;
+  background: #FFFFFF;
+  padding: 5px 0;
+  box-shadow: 3px 3px 10px #888;
+}
+.highcharts-menu-item {
+  padding: 0 1em;
+  background: none;
+  color: #303030;
+  cursor: pointer;
+}
+.highcharts-menu-item:hover {
+  background: #4572A5;
+  color: #FFFFFF;
+}
+
+/* Drilldown module */
+.highcharts-drilldown-point {
+  cursor: pointer;
+}
+.highcharts-drilldown-data-label text, .highcharts-drilldown-axis-label {
+  cursor: pointer;
+  fill: #0d233a;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* No-data module */
+.highcharts-no-data text {
+  font-weight: bold;
+  font-size: 12px;
+  fill: #60606a;
+}
+    </style>
+    <body class="page-container-bg-solid">
+        <div class="page-wrapper">
+            <div class="page-wrapper-row">
+                <div class="page-wrapper-top">
+                    <!-- BEGIN HEADER -->
+                    <div class="page-header">
+                        <!-- BEGIN HEADER TOP -->
+                        <div class="page-header-top">
+                            <div class="container">
+                                <!-- BEGIN LOGO -->
+                                <div class="page-logo">
+                                    <a href="index.html">
+                                        <!-- <img src="../assets/layouts/layout3/img/logo-default.jpg" alt="logo" class="logo-default"> -->
+                                    </a>
+                                </div>
+                                <!-- END LOGO -->
+                                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                                <a href="javascript:;" class="menu-toggler"></a>
+                                <!-- END RESPONSIVE MENU TOGGLER -->
+                                <!-- BEGIN TOP NAVIGATION MENU -->
+                                <div class="top-menu">
+                                    <ul class="nav navbar-nav pull-right">
+
+                                        <!-- BEGIN NOTIFICATION DROPDOWN -->
+                                        <!-- DOC: Apply "dropdown-hoverable" class after "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
+                                        <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
+                                        <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="icon-bell"></i>
+                                                <span class="badge badge-default">7</span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="external">
+                                                    <h3>You have
+                                                        <strong>12 pending</strong> tasks</h3>
+                                                    <a href="app_todo.html">view all</a>
+                                                </li>
+                                                <li>
+                                                    <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">just now</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-success">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </span> New user registered. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">3 mins</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-danger">
+                                                                        <i class="fa fa-bolt"></i>
+                                                                    </span> Server #12 overloaded. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">10 mins</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-warning">
+                                                                        <i class="fa fa-bell-o"></i>
+                                                                    </span> Server #2 not responding. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">14 hrs</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-info">
+                                                                        <i class="fa fa-bullhorn"></i>
+                                                                    </span> Application error. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">2 days</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-danger">
+                                                                        <i class="fa fa-bolt"></i>
+                                                                    </span> Database overloaded 68%. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">3 days</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-danger">
+                                                                        <i class="fa fa-bolt"></i>
+                                                                    </span> A user IP blocked. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">4 days</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-warning">
+                                                                        <i class="fa fa-bell-o"></i>
+                                                                    </span> Storage Server #4 not responding dfdfdfd. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">5 days</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-info">
+                                                                        <i class="fa fa-bullhorn"></i>
+                                                                    </span> System Error. </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="time">9 days</span>
+                                                                <span class="details">
+                                                                    <span class="label label-sm label-icon label-danger">
+                                                                        <i class="fa fa-bolt"></i>
+                                                                    </span> Storage server failed. </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- END NOTIFICATION DROPDOWN -->
+                                        <!-- BEGIN TODO DROPDOWN -->
+                                        <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <i class="icon-calendar"></i>
+                                                <span class="badge badge-default">3</span>
+                                            </a>
+                                            <ul class="dropdown-menu extended tasks">
+                                                <li class="external">
+                                                    <h3>You have
+                                                        <strong>12 pending</strong> tasks</h3>
+                                                    <a href="app_todo_2.html">view all</a>
+                                                </li>
+                                                <li>
+                                                    <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="task">
+                                                                    <span class="desc">New release v1.2 </span>
+                                                                    <span class="percent">30%</span>
+                                                                </span>
+                                                                <span class="progress">
+                                                                    <span style="width: 40%;" class="progress-bar progress-bar-success" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                                                        <span class="sr-only">40% Complete</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="task">
+                                                                    <span class="desc">Application deployment</span>
+                                                                    <span class="percent">65%</span>
+                                                                </span>
+                                                                <span class="progress">
+                                                                    <span style="width: 65%;" class="progress-bar progress-bar-danger" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                                                        <span class="sr-only">65% Complete</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="task">
+                                                                    <span class="desc">Mobile app release</span>
+                                                                    <span class="percent">98%</span>
+                                                                </span>
+                                                                <span class="progress">
+                                                                    <span style="width: 98%;" class="progress-bar progress-bar-success" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+                                                                        <span class="sr-only">98% Complete</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="task">
+                                                                    <span class="desc">Database migration</span>
+                                                                    <span class="percent">10%</span>
+                                                                </span>
+                                                                <span class="progress">
+                                                                    <span style="width: 10%;" class="progress-bar progress-bar-warning" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                                                        <span class="sr-only">10% Complete</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="task">
+                                                                    <span class="desc">Web server upgrade</span>
+                                                                    <span class="percent">58%</span>
+                                                                </span>
+                                                                <span class="progress">
+                                                                    <span style="width: 58%;" class="progress-bar progress-bar-info" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100">
+                                                                        <span class="sr-only">58% Complete</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="task">
+                                                                    <span class="desc">Mobile development</span>
+                                                                    <span class="percent">85%</span>
+                                                                </span>
+                                                                <span class="progress">
+                                                                    <span style="width: 85%;" class="progress-bar progress-bar-success" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                                                        <span class="sr-only">85% Complete</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;">
+                                                                <span class="task">
+                                                                    <span class="desc">New UI release</span>
+                                                                    <span class="percent">38%</span>
+                                                                </span>
+                                                                <span class="progress progress-striped">
+                                                                    <span style="width: 38%;" class="progress-bar progress-bar-important" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">
+                                                                        <span class="sr-only">38% Complete</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- END TODO DROPDOWN -->
+                                        <li class="droddown dropdown-separator">
+                                            <span class="separator"></span>
+                                        </li>
+                                        <!-- BEGIN INBOX DROPDOWN -->
+                                        <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <span class="circle">3</span>
+                                                <span class="corner"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="external">
+                                                    <h3>You have
+                                                        <strong>7 New</strong> Messages</h3>
+                                                    <a href="app_inbox.html">view all</a>
+                                                </li>
+                                                <li>
+                                                    <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="photo">
+                                                                    <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
+                                                                <span class="subject">
+                                                                    <span class="from"> Lisa Wong </span>
+                                                                    <span class="time">Just Now </span>
+                                                                </span>
+                                                                <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="photo">
+                                                                    <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
+                                                                <span class="subject">
+                                                                    <span class="from"> Richard Doe </span>
+                                                                    <span class="time">16 mins </span>
+                                                                </span>
+                                                                <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="photo">
+                                                                    <img src="../assets/layouts/layout3/img/avatar1.jpg" class="img-circle" alt=""> </span>
+                                                                <span class="subject">
+                                                                    <span class="from"> Bob Nilson </span>
+                                                                    <span class="time">2 hrs </span>
+                                                                </span>
+                                                                <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="photo">
+                                                                    <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
+                                                                <span class="subject">
+                                                                    <span class="from"> Lisa Wong </span>
+                                                                    <span class="time">40 mins </span>
+                                                                </span>
+                                                                <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="photo">
+                                                                    <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
+                                                                <span class="subject">
+                                                                    <span class="from"> Richard Doe </span>
+                                                                    <span class="time">46 mins </span>
+                                                                </span>
+                                                                <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- END INBOX DROPDOWN -->
+                                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                                        <li class="dropdown dropdown-user dropdown-dark">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <img alt="" class="img-circle" src="../assets/layouts/layout3/img/avatar9.jpg">
+                                                <span class="username username-hide-mobile">Uniliver</span>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-default">
+                                                <li>
+                                                    <a href="page_user_profile_1.html">
+                                                        <i class="icon-user"></i> My Profile </a>
+                                                </li>
+                                                <li>
+                                                    <a href="app_calendar.html">
+                                                        <i class="icon-calendar"></i> My Calendar </a>
+                                                </li>
+                                                <li>
+                                                    <a href="app_inbox.html">
+                                                        <i class="icon-envelope-open"></i> My Inbox
+                                                        <span class="badge badge-danger"> 3 </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="app_todo_2.html">
+                                                        <i class="icon-rocket"></i> My Tasks
+                                                        <span class="badge badge-success"> 7 </span>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a href="page_user_lock_1.html">
+                                                        <i class="icon-lock"></i> Lock Screen </a>
+                                                </li>
+                                                <li>
+                                                    <a href="page_user_login_1.html">
+                                                        <i class="icon-key"></i> Log Out </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- END USER LOGIN DROPDOWN -->
+                                    </ul>
+                                </div>
+                                <!-- END TOP NAVIGATION MENU -->
+                            </div>
+                        </div>
+                        <!-- END HEADER TOP -->
+                        <!-- BEGIN HEADER MENU -->
+                        <div class="page-header-menu">
+                            <div class="container">
+                                <!-- BEGIN HEADER SEARCH BOX -->
+                                <form class="search-form" action="page_general_search.html" method="GET">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search" name="query">
+                                        <span class="input-group-btn">
+                                            <a href="javascript:;" class="btn submit">
+                                                <i class="icon-magnifier"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </form>
+                                <!-- END HEADER SEARCH BOX -->
+                                <!-- BEGIN MEGA MENU -->
+                                <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+                                <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+                                <div class="hor-menu  ">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active">
+                                            <a href="index.html"> DASHBOARD</a>
+                                        </li>
+                                        <li>
+                                            <a href="campaigns.html"> CAMPAIGN</a>
+                                        </li>
+                                        <li>
+                                            <a href="users.html"> USERS</a>
+                                        </li>
+                                        <li>
+                                            <a href="adTracking.html"> ADD TRACKING</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- END MEGA MENU -->
+                            </div>
+                        </div>
+                        <!-- END HEADER MENU -->
+                    </div>
+                    <!-- END HEADER -->
+                </div>
+            </div>
+            <div class="page-wrapper-row full-height">
+                <div class="page-wrapper-middle">
+                    <!-- BEGIN CONTAINER -->
+                    <div class="page-container">
+                        <!-- BEGIN CONTENT -->
+                        <div class="page-content-wrapper">
+                            <!-- BEGIN CONTENT BODY -->
+                            <!-- BEGIN PAGE CONTENT BODY -->
+                            <div class="page-content">
+                                <div class="container">
+                                    <!-- BEGIN PAGE CONTENT INNER -->
+                                    <div class="page-content-inner">
+                                        <div class="mt-content-body">
+                                            <div class="row">
+                                                <div class="col-md-5 col-sm-5 tiles">
+                                                  <div class="row">
+                                                    <div class="col-md-12 pd5">
+                                                  <div class="home-tile">
+                                                    <h2 class="text-center">TOTAL AD DISTANCE <i class="fa fa-th pull-right"></i></h2>
+                                                    <div class="">
+                                                      <h1 class="text-center">3,667</h1>
+                                                      <h3 class="text-center">MILES</h3>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="row mt-3">
+                                                <div class="col-md-6 pd5">
+                                                  <div class="home-tile">
+                                                    <h2 class="text-center">HOT ROUTES</h2>
+                                                    <div class="">
+                                                      <h1 class="text-center">04</h1>
+                                                      <h3 class="text-center">LOCATIONS</h3>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-6 pd5">
+                                                  <div class="home-tile">
+                                                    <h2 class="text-center">TOTAL CARS</h2>
+                                                    <div class="">
+                                                      <h1 class="text-center">280</h1>
+                                                      <h3 class="text-center">DRIVERS</h3>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                                </div>
+                                                <div class="col-md-7 col-sm-7">
+                                                    <div class="portlet dark ">
+                                                        <div class="portlet-title">
+                                                            <div class="caption caption-md">
+                                                                <i class="icon-bar-chart font-dark hide"></i>
+                                                                <span class="caption-subject font-white uppercase bold">Sales Summary</span>
+                                                                <span class="caption-helper hide">weekly stats...</span>
+                                                            </div>
+                                                            <div class="actions">
+                                                                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                                    <label class="btn btn-transparent btn-no-border blue-oleo btn-outline btn-circle btn-sm active">
+                                                                        <input type="radio" name="options" class="toggle" id="option1">Today</label>
+                                                                    <label class="btn btn-transparent btn-no-border blue-oleo btn-outline btn-circle btn-sm">
+                                                                        <input type="radio" name="options" class="toggle" id="option2">Week</label>
+                                                                    <label class="btn btn-transparent btn-no-border blue-oleo btn-outline btn-circle btn-sm">
+                                                                        <input type="radio" name="options" class="toggle" id="option2">Month</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="portlet-body">
+                                                            <div class="row list-separated">
+                                                                <div class="col-md-4 col-sm-4 col-xs-6">
+                                                                    <div class="font-white font-lg" style="font-family: Boxed Regular;font-size: 1.5em;"> WEEKLY DISTANCE </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-6">
+                                                                    <div class="font-grey-mint font-sm"> Avg. daily miles </div>
+                                                                    <div class="uppercase font-hg font-white"> 115
+                                                                        <span class="font-lg font-grey-mint">miles</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-6">
+                                                                    <div class="font-grey-mint font-sm"> Avg. weekly miles </div>
+                                                                      <div class="uppercase font-hg font-elo"> 780
+                                                                        <span class="font-lg font-grey-mint">miles</span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <ul class="list-separated list-inline-xs hide">
+                                                                <li>
+                                                                    <div class="font-grey-mint font-sm"> Total Sales </div>
+                                                                    <div class="uppercase font-hg font-red-flamingo"> 13,760
+                                                                        <span class="font-lg font-grey-mint">$</span>
+                                                                    </div>
+                                                                </li>
+                                                                <li> </li>
+                                                                <li class="border">
+                                                                    <div class="font-grey-mint font-sm"> Revenue </div>
+                                                                    <div class="uppercase font-hg theme-font"> 4,760
+                                                                        <span class="font-lg font-grey-mint">$</span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="divider"> </li>
+                                                                <li>
+                                                                    <div class="font-grey-mint font-sm"> Expenses </div>
+                                                                    <div class="uppercase font-hg font-purple"> 11,760
+                                                                        <span class="font-lg font-grey-mint">$</span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="divider"> </li>
+                                                                <li>
+                                                                    <div class="font-grey-mint font-sm"> Growth </div>
+                                                                    <div class="uppercase font-hg font-blue-sharp"> 9,760
+                                                                        <span class="font-lg font-grey-mint">$</span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <div id="hc" class="morris-chart" style="height: 310px"> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END PAGE CONTENT INNER -->
+                                </div>
+                            </div>
+                            <!-- END PAGE CONTENT BODY -->
+                            <!-- END CONTENT BODY -->
+                        </div>
+                        <!-- END CONTENT -->
+                    </div>
+                    <!-- END CONTAINER -->
+                </div>
+            </div>
+            <div class="page-wrapper-row">
+                <div class="page-wrapper-bottom">
+                    <!-- BEGIN FOOTER -->
+                    <!-- BEGIN INNER FOOTER -->
+                    <div class="page-footer">
+                        <div class="container"> 2018 &copy; Developed by
+                            <a target="_blank" href="http://bi.ae">Brand Impact</a>
+                        </div>
+                    </div>
+                    <div class="scroll-to-top">
+                        <i class="icon-arrow-up"></i>
+                    </div>
+                    <!-- END INNER FOOTER -->
+                    <!-- END FOOTER -->
+                </div>
+            </div>
+        </div>
+
+        <!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script>
+<script src="../assets/global/plugins/ie8.fix.min.js"></script>
+<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="../assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="../assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="../assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="../assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+        <script>
+            $(document).ready(function()
+            {
+                $('#clickmewow').click(function()
+                {
+                    $('#radio1003').attr('checked', 'checked');
+                });
+            })
+        </script>
+        <script>
+        Highcharts.chart('hc', {
+
+
+    title: {
+        text: null
+    },
+
+    yAxis: {
+        title: {
+            text: 'Distance Covered'
+        }
+    },
+    legend: {
+        enabled:false
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 1
+        }
+    },
+
+    series: [{
+        name: 'Installation',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+</script>
+</body>
+
+</html>

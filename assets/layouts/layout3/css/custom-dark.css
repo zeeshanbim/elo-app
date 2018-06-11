@@ -1,0 +1,429 @@
+/* here you can put your own css to customize and override the theme */
+
+@font-face {
+  font-family: 'Boxed';
+  src: url('fonts/BoxedBook.woff2') format('woff2'),
+      url('fonts/BoxedBook.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Boxed Heavy';
+  src: url('fonts/BoxedHeavy.woff2') format('woff2'),
+      url('fonts/BoxedHeavy.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Boxed Light';
+  src: url('fonts/BoxedLight.woff2') format('woff2'),
+      url('fonts/BoxedLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Boxed Medium';
+  src: url('fonts/BoxedMedium.woff2') format('woff2'),
+      url('fonts/BoxedMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Boxed Regular';
+  src: url('fonts/BoxedRegular-Bold.woff2') format('woff2'),
+      url('fonts/BoxedRegular-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Boxed Semibold';
+  src: url('fonts/BoxedSemibold.woff2') format('woff2'),
+      url('fonts/BoxedSemibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Boxed Thin';
+  src: url('fonts/BoxedThin.woff2') format('woff2'),
+      url('fonts/BoxedThin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+.mt-0{
+  margin-top: 0rem;
+}
+.mt-1{
+  margin-top: 0.24rem;
+}
+.mt-2{
+  margin-top: 0.5rem;
+}
+.mt-3{
+  margin-top: 1rem;
+}
+.mt-4{
+  margin-top: 1.5rem;
+}
+.mt-5{
+  margin-top: 3rem;
+}
+
+.mb-0{
+  margin-bottom: 0rem;
+}
+.mb-1{
+  margin-bottom: 0.24rem;
+}
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+.mb-3{
+  margin-bottom: 1rem;
+}
+.mb-4{
+  margin-bottom: 1.5rem;
+}
+.mb-5{
+  margin-bottom: 3rem;
+}
+
+.ml-0{
+  margin-left: 0rem;
+}
+.ml-1{
+  margin-left: 0.24rem;
+}
+.ml-2{
+  margin-left: 0.5rem;
+}
+.ml-3{
+  margin-left: 1rem;
+}
+.ml-4{
+  margin-left: 1.5rem;
+}
+.ml-5{
+  margin-left: 3rem;
+}
+
+.mr-0{
+  margin-right: 0rem;
+}
+.mr-1{
+  margin-right: 0.24rem;
+}
+.mr-2{
+  margin-right: 0.5rem;
+}
+.mr-3{
+  margin-right: 1rem;
+}
+.mr-4{
+  margin-right: 1.5rem;
+}
+.mr-5{
+  margin-bottom: 3rem;
+}
+
+.row-eq-height{
+  display: flex;
+  display: Webkit-flex;
+  display: webkit-box;
+}
+
+html, body{
+  font-family: Boxed;
+}
+.elo-bg , .bg-elo{
+  background-color: #4a69f7 !important;
+}
+.home-tile{
+    background: #4a69f7;
+    color: white;
+    padding: 12px 20px 15px;
+}
+.home-tile h2{
+  margin-top: 10px;
+  font-family: Boxed Regular;
+}
+.home-tile .fa-th{
+  margin-top: 2.5%;
+}
+.home-tile h1{
+  font-family: Boxed Regular;
+  font-size: 7em;
+  margin-bottom: -10px;
+}
+
+.home-tile h3{
+  font-family: Boxed Regular;
+  font-size: 2em;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.tiles div.pd5{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+
+.gauge-chart h2{
+  color: #4a69f7;
+  font-family: Boxed Regular;
+  margin-top: 0px;
+}
+
+.gauge-chart h4{
+  margin-bottom: 0px;
+  margin-top: 50%;
+}
+
+.loc-info h4{
+  color: #2E203B;
+  font-family: Boxed Regular;
+}
+.loc-part{
+  display: inline-flex;
+}
+.loc-part h3{
+  color:#6E00FC;
+  font-size: 2em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: Boxed Regular;
+}
+
+.camp-id{
+  font-family: Boxed Regular;
+  font-size: 1.5em;
+}
+
+.create-camp{
+    font-size: 1.5em;
+    font-family: Boxed Regular;
+    padding: 5px 10px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.create-camp .fa-plus{
+  margin: 0px;
+  font-size: 1em;
+  top: 0px;
+}
+
+.cmp-info-1{
+  color: #fff;
+}
+.cmp-info-1 h3{
+  font-family: Boxed Regular;
+}
+.cmp-info-1 h4{
+  font-family: Boxed Regular;
+}
+.cmp-info-1 a{
+  color: #fff;
+}
+
+.cmp-info-1 .bdr-top{
+  margin-top: 10px;
+  border-top: 1px solid #fff;
+  wi
+}
+
+.cmp-info-1 .gauge-chart h4{
+  margin-top: 30%;
+  font-size: 1em;
+  color: #000;
+}
+
+.cmp-info-1 .gauge-chart h2{
+  color: #fff;
+}
+
+.hot-routes-info h4{
+  margin-top: 3px;
+  margin-bottom: 0px;
+  font-size: 1.2em;
+  color: #fff;
+  font-family: Boxed Regular;
+
+}
+.hot-routes-info .bdr-top {
+    margin-top: 0px;
+    border-top: 1px solid #fff;
+}
+
+.hot-routes-info .hot-route-line {
+  width: 30%;
+  height: 7px;
+  border-radius: 5px !important;
+}
+
+.hot-routes-info .hot-route1{
+  background: #32c5d2;
+}
+.hot-routes-info .hot-route2{
+  background: #f2784b;
+}
+.hot-routes-info .hot-route3{
+  background: #52d232;
+}
+.hot-route-inner{
+  display: inline-flex;
+}
+
+.hot-route-inner h5{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 0.8em;
+  color: #000;
+  font-family: Boxed Regular;
+
+}
+
+.hot-route-inner h3{
+  font-size: 2.3em;
+  margin-top: 0px;
+  color: #fff;
+  font-family: Boxed Regular;
+
+}
+
+
+.t-car-dis{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-left:-10px !important;
+  margin-right:-10px !important;
+}
+
+.t-car-dis h2{
+  font-size: 2em;
+  color: #fff;
+  font-family: Boxed Regular;
+}
+
+.t-car-dis h1{
+  color: #fff;
+  font-size: 5em;
+  font-family: Boxed Regular;
+}
+
+.t-car-dis h3{
+  color: #fff;
+  font-family: Boxed Regular;
+}
+.t-car-dis .br{
+  border-right: 1.5px solid #fff;
+}
+
+.cmp-table{
+  padding-left: 5px;
+  padding-right: 3px;
+
+}
+
+.cmp-table .table-scrollable{
+  margin: 0px !important;
+}
+
+.cmp-table thead{
+    background: #4a69f7;
+    color: #fff;
+    font-family: Boxed Regular;
+}
+
+#map-canvas{
+  height: 800px;
+}
+.map-form{
+  padding: 10px;
+    color: white;
+    padding: 10px;
+    color: white;
+    width: 30%;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+}
+.map-form .form-control{
+  background: #4a69f7;
+    color: #fff;
+    border-color: #fff;
+    border: 1.4px solid;
+    font-family: Boxed Regular;
+    font-size: 1.2em;
+}
+
+.map-form .map-button{
+  width: 100%;
+    background-color: #fff !important;
+    color: #4a69f7 !important;
+    font-family: Boxed Regular;
+    font-size: 1.3em;
+}
+
+.map-form h3{
+  font-family: Boxed Regular;
+    margin-top: 0px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+}
+
+.map-form h4{
+  font-family: Boxed Regular;
+  margin-bottom: 1.8em;
+}
+
+.map-canvas-container{
+  width: 100% !important;
+}
+
+
+.page-header .page-header-top{
+  background: #000;
+}
+
+.page-header .page-header-menu {
+    background: #4a69f7 !important;
+}
+
+.page-header .page-header-menu .hor-menu .navbar-nav>li.active>a{
+  color: #fff;
+background: #304dd1;
+}
+
+.page-header .page-header-menu .hor-menu .navbar-nav>li>a{
+  font-family: Boxed Regular;
+}
+.page-header .page-header-menu .search-form .input-group .input-group-btn .btn.submit{
+  right: 23px;
+}
+
+.page-header .page-header-menu .search-form .input-group .form-control {
+    color: #ffffff;
+    background: #4a69f7;
+    border: 1px solid #fff;
+}
+.page-header .page-header-menu .search-form .input-group {
+    background: #4a69f7;
+}
+
+.page-content-wrapper{
+  background-color: #2c2c2c;
+}
+.portlet.dark{
+  background: #000;
+  padding: 15px;
+  color: #fff !important;
+}
